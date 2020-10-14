@@ -1,0 +1,3 @@
+eat	an
+drink	uong
+student	hoc sinh
