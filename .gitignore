@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/.idea
+# Datasource local storage ignored files
+/../../../../../../:\Users\ADMIN\IdeaProjects\TUDIEN\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

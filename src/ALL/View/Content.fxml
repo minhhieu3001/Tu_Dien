@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.web.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<StackPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="510.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ALL.View.Controller">
+    <children>
+        <SplitPane dividerPositions="0.4197994987468672" prefHeight="540.0" prefWidth="692.0">
+            <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" style="-fx-background-color: #c3c7f3;">
+                    <children>
+                        <Label layoutX="22.0" layoutY="33.0" prefHeight="26.0" prefWidth="191.0" text="Nhap tu ban muon tra:">
+                            <font>
+                                <Font name="System Bold" size="17.0" />
+                            </font></Label>
+                        <TextField fx:id="text" layoutX="22.0" layoutY="70.0" onAction="#showDetails" onKeyPressed="#TextFieldListener" prefHeight="31.0" prefWidth="191.0">
+                            <cursor>
+                                <Cursor fx:constant="TEXT" />
+                            </cursor>
+                            <effect>
+                                <ColorAdjust />
+                            </effect></TextField>
+                        <Group />
+                        <ListView fx:id="listView" layoutX="22.0" layoutY="101.0" onMousePressed="#setOnCLick" opacity="0.64" prefHeight="162.0" prefWidth="197.0" style="-fx-background-color: #c3c7f3;">
+                            <cursor>
+                                <Cursor fx:constant="DEFAULT" />
+                            </cursor></ListView>
+                        <ImageView blendMode="COLOR_BURN" fitHeight="150.0" fitWidth="183.0" layoutX="94.0" layoutY="301.0" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="https://i.imgur.com/87aBBVG.png" />
+                            </image>
+                        </ImageView>
+                        <Label layoutX="43.0" layoutY="473.0" opacity="0.62" prefHeight="21.0" prefWidth="246.0" text="Maded by Bui Minh Hieu and Nguyen Sinh Hien">
+                            <font>
+                                <Font name="System Italic" size="11.0" />
+                            </font>
+                        </Label>
+                        <Group />
+                        <Button fx:id="nhap" layoutX="219.0" layoutY="69.0" mnemonicParsing="false" onAction="#showDetails" prefHeight="32.0" prefWidth="42.0">
+                            <graphic>
+                                <ImageView blendMode="COLOR_BURN" fitHeight="25.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="https://img.lovepik.com/original_origin_pic/19/01/07/5138de707a808fdcb21f8190a417a259.png_wh860.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                            <cursor>
+                                <Cursor fx:constant="CLOSED_HAND" />
+                            </cursor>
+                            <font>
+                                <Font size="12.0" />
+                            </font>
+                        </Button>
+                    </children>
+                </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="469.0" prefWidth="544.0" style="-fx-background-color: #c3c7f3;">
+                    <children>
+                        <VBox fx:id="vBox" layoutX="4.0" layoutY="65.0" prefHeight="434.0" prefWidth="460.0">
+                            <effect>
+                                <SepiaTone level="0.65" />
+                            </effect></VBox>
+                        <Label layoutX="139.0" layoutY="18.0" prefHeight="27.0" prefWidth="181.0" text="Change Dictionary: ">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font></Label>
+                        <ChoiceBox fx:id="cb" layoutX="322.0" layoutY="16.0" onMousePressed="#SetChoiceBox" prefHeight="31.0" prefWidth="111.0" />
+                        <Button fx:id="sound" layoutX="18.0" layoutY="15.0" mnemonicParsing="false" onAction="#soundButton" prefHeight="36.0" prefWidth="61.0">
+                            <cursor>
+                                <Cursor fx:constant="CLOSED_HAND" />
+                            </cursor>
+                            <graphic>
+                                <ImageView blendMode="COLOR_BURN" fitHeight="29.0" fitWidth="26.0" onMousePressed="#soundButton" pickOnBounds="true" preserveRatio="true">
+                                    <image>
+                                        <Image url="https://png.pngtree.com/png-vector/20190909/ourlarge/pngtree-speaker-icon-isolated-png-image_1727903.jpg" />
+                                    </image>
+                                    <cursor>
+                                        <Cursor fx:constant="DEFAULT" />
+                                    </cursor>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</StackPane>
