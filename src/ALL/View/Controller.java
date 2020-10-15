@@ -70,13 +70,13 @@ public class Controller implements Initializable{
     public void TextFieldListener()  {
 
         if(check1 == true) {
-        //Listen for textfied
+            //Listen for textfied
             text.textProperty().addListener((observable, oldValue, newValue) -> {
                 //System.out.println(oldValue + " " + newValue);
                 if (!newValue.equals("")) {
 
-                    System.out.println(oldValue);
-                    System.out.println(newValue);
+//                    System.out.println(oldValue);
+//                    System.out.println(newValue);
                     listView.setItems(Dictionary.addToListView(newValue));
                 }
                 if(newValue.equals("")) {
@@ -91,7 +91,7 @@ public class Controller implements Initializable{
         cb.setAccessibleText("hello");
         ActionEvent event = null;
         cb.setItems(FXCollections.observableArrayList(
-                "Add Word", "Remove Word")
+                "Add Word", "Remove Word", "Change word")
         );
         if(check2 == true) {
             cb.getSelectionModel().selectedIndexProperty().addListener(new
@@ -105,7 +105,9 @@ public class Controller implements Initializable{
                        else if(newValue.equals(1)) {
                            RemoveHandle(event);
                        }
-
+                       else if(newValue.equals(2)) {
+                           ChangeHandle(event);
+                       }
 
                    }
 
@@ -129,9 +131,6 @@ public class Controller implements Initializable{
         });
     }
 
-    @FXML
-    Button add;
-
     public void AddButtonHandle(ActionEvent event)  {
         GridPane secondLayout = new GridPane();
         secondLayout.setHgap(10);
@@ -146,14 +145,12 @@ public class Controller implements Initializable{
         TextField vWord = new TextField();
         vWord.setPromptText("Viet Nam Word");
         Button ok = new Button();
-        ok.setPrefSize(26,20);
-        ok.setText("Finish");
-        ok.setMaxSize(30,7);
+        ok.setText("OK");
         secondLayout.add(new Label("English Word"), 0, 1, 10, 1);
         secondLayout.add(eWord, 11, 1, 18, 1);
         secondLayout.add(new Label("Viet Nam Word"), 0, 2, 10, 2);
         secondLayout.add(vWord, 11, 2, 18, 2);
-        secondLayout.add(ok, 15, 5);
+        secondLayout.add(ok, 15, 5,10,1);
         newWindow.setScene(secondScene);
         newWindow.show();
         eWord.setOnAction(new EventHandler<ActionEvent>() {
@@ -181,8 +178,6 @@ public class Controller implements Initializable{
         });
     }
 
-    @FXML
-    private Button remove;
     public void RemoveHandle(ActionEvent event) {
         GridPane secondLayout = new GridPane();
         secondLayout.setHgap(10);
@@ -194,17 +189,18 @@ public class Controller implements Initializable{
         newWindow.setTitle("Nhap tu va nghia ban muon xoa");
         TextField eWord = new TextField();
         eWord.setPromptText("English Word");
-        Button ok = new Button();
+        Button ok  = new Button();
         ok.setText("OK");
         secondLayout.add(new Label("English Word"), 0, 1, 10, 1);
         secondLayout.add(eWord, 11, 1, 18, 1);
-        secondLayout.add(ok, 15, 4);
+        secondLayout.add(ok, 15, 5,10,1);
         newWindow.setScene(secondScene);
         newWindow.show();
         eWord.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 String word = eWord.getText();
+                Dictionary.getWord_List().remove(word);
                 DictionaryManagement.removeFromDatabase(word);
             }
         });
@@ -216,6 +212,54 @@ public class Controller implements Initializable{
         });
     }
 
+    public void ChangeHandle(ActionEvent event) {
+        GridPane secondLayout = new GridPane();
+        secondLayout.setHgap(10);
+        secondLayout.setVgap(10);
+        secondLayout.setPadding(new Insets(20, 150, 10, 10));
+        Scene secondScene = new Scene(secondLayout, 350, 150);
+        Stage newWindow = new Stage();
+        newWindow.getIcons().add(new Image("https://png.pngtree.com/element_our/md/20180518/md_5afec9fa6eed3.jpg"));
+        newWindow.setTitle("Nhap tu va nghia ban muon thay doi");
+        TextField cWord = new TextField();
+        cWord.setPromptText("Changed Word");
+        TextField vWord = new TextField();
+        vWord.setPromptText("New mean");
+        Button ok = new Button();
+        ok.setText("OK");
+        secondLayout.add(new Label("English Word"), 0, 1, 10, 1);
+        secondLayout.add(cWord, 11, 1, 18, 1);
+        secondLayout.add(new Label("Viet Nam Word"), 0, 2, 10, 2);
+        secondLayout.add(vWord, 11, 2, 18, 2);
+        secondLayout.add(ok, 15, 5,10,1);
+        newWindow.setScene(secondScene);
+        newWindow.show();
+        cWord.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                String word_target = cWord.getText();
+                //System.out.println(word_target);
+                vWord.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        String word_explain = vWord.getText();
+//                        Word newWord = new Word(word_target, word_explain);
+//                        DictionaryManagement.removeFromDatabase(word_target);
+//                        DictionaryManagement.addToDatabase(word_target,word_explain);
+//                        Dictionary.getWord_List().add(newWord);
+                        DictionaryManagement.changeFromDatabase(word_target, word_explain);
+                    }
+                });
+            }
+        });
+        ok.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                newWindow.close();
+                //mainApp.getWordlist().showAllWords(15, 20, 20);
+            }
+        });
+    }
 
     @FXML
     private Button sound = new Button();

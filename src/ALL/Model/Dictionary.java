@@ -110,7 +110,7 @@ public class Dictionary {
 
     public void ExportFile() {
         try {
-            FileWriter fileOut = new FileWriter("E:\\algorithm\\BT_OOP\\src\\DictionaryOut.txt");
+            FileWriter fileOut = new FileWriter("src\\DictionaryOut.txt");
             for(Word i : word_List) {
                 fileOut.write(i.getWord_target());
                 fileOut.append(" ");

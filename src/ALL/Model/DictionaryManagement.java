@@ -119,6 +119,18 @@ public class DictionaryManagement {
             con.close();
         }catch(Exception e){ System.out.println(e);}
     }
+    public static void changeFromDatabase(String cWord, String vWord) {
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection con= DriverManager.getConnection(
+                    "jdbc:mysql://localhost:3306/project","root","hungnguyen");
+
+            Statement stmt=con.createStatement();
+            stmt.executeUpdate("update project.dictionary set mean =" + "'" + vWord + "'" +
+                    "where word = " + "'" + cWord + "'");
+            con.close();
+        }catch(Exception e){ System.out.println(e);}
+    }
 
     public static void dictionarySearch(Dictionary dict) {
         Scanner sc = new Scanner(System.in);
@@ -131,6 +143,7 @@ public class DictionaryManagement {
     public static void dictionaryExportFile(Dictionary dict) {
         dict.ExportFile();
     }
+
 
 
 }
