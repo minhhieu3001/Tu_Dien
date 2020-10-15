@@ -1,3 +1,8 @@
+<<<<<<< HEAD
 eat	an
 drink	uong
+=======
+eat	an
+drink	uong
+>>>>>>> origin/main
 student	hoc sinh
